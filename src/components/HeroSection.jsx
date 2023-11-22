@@ -1,11 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./../App.css";
+import createClient from "../client";
+import axios from "axios";
+import imageUrlBuilder from "@sanity/image-url";
 
 function HeroSection() {
   const [activeDot, setActiveDot] = useState(0);
+  const [cimage, setcImage] = useState([]);
+
+  const builder = imageUrlBuilder(createClient);
+
+  useEffect(() => {
+    const fetchCarousel = async () => {
+      try {
+        // Fetch carousel data from the API
+        const response = await axios.get(
+          "https://shri-swami-krupa-server.vercel.app/carousel-data"
+        );
+
+        // Update the state with the fetched data
+        setcImage(response.data.result);
+        console.log(response.data.result);
+      } catch (error) {
+        console.error("Error fetching carousel data:", error);
+        setcImage([]);
+      }
+    };
+
+    fetchCarousel();
+  }, []);
+
+  function urlFor(source) {
+    return builder.image(source);
+  }
+
+  const isMobile = window.innerWidth <= 768; // Adjust the breakpoint as needed
 
   const settings = {
     autoplay: true,
@@ -61,41 +93,29 @@ function HeroSection() {
 
   return (
     <div className="w-full overflow-hidden">
-      <Slider {...settings}>
-        <div className="relative h-screen w-full">
-          <img
-            className="object-cover object-center w-full h-full"
-            src="../../imgposter.jpg"
-            alt="Hero"
-          />
-          <div className="absolute inset-0 bg-opacity-50 bg-black flex items-center justify-center">
-            <h1 className="text-4xl font-bold text-white">Your Hero Title 1</h1>
-          </div>
-        </div>
-
-        <div className="relative h-screen w-full">
-          <img
-            className="object-cover object-center w-full h-full"
-            src="../../pic2.png"
-            alt="Hero"
-          />
-          <div className="absolute inset-0 bg-opacity-50 bg-black flex items-center justify-center">
-            <h1 className="text-4xl font-bold text-white">Your Hero Title 2</h1>
-          </div>
-        </div>
-
-        <div className="relative h-screen w-full">
-          <img
-            className="object-cover object-center w-full h-full"
-            src="https://placehold.co/1920x1080"
-            alt="Hero"
-          />
-          <div className="absolute inset-0 bg-opacity-50 bg-black flex items-center justify-center">
-            <h1 className="text-4xl font-bold text-white">Your Hero Title 3</h1>
-          </div>
-        </div>
-        {/* Add more slides as needed */}
-      </Slider>
+      <div className="w-full overflow-hidden">
+        <Slider {...settings}>
+          {/* Map the cimage object in that */}
+          {cimage.map((item, index) =>
+            // Conditionally render the entire div based on the size and device
+            (isMobile && item.size === "375x780") ||
+            (!isMobile && item.size === "1920x1080") ? (
+              <div key={index} className="relative h-screen w-full">
+                <img
+                  className="object-cover object-center w-full h-full"
+                  src={urlFor(item.image.asset).url()}
+                  alt={`Hero ${index + 1}`}
+                />
+                <div className="absolute inset-0 bg-opacity-50 bg-black flex items-center justify-center">
+                  <h1 className="text-4xl font-bold text-white">
+                    {item.description}
+                  </h1>
+                </div>
+              </div>
+            ) : null
+          )}
+        </Slider>
+      </div>
     </div>
   );
 }
