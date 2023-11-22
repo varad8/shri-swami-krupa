@@ -9,13 +9,17 @@ import Home from "./components/Home";
 import Contact from "./components/Contact";
 import About from "./components/About";
 import Layout from "./Layout";
+import { I18nextProvider, useTranslation } from "react-i18next";
+import i18n from "./i18n";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <Layout>
-        <Home />
+        <I18nextProvider i18n={i18n}>
+          <Home />
+        </I18nextProvider>
       </Layout>
     ),
   },
@@ -23,7 +27,9 @@ const router = createBrowserRouter([
     path: "/contact",
     element: (
       <Layout>
-        <Contact />
+        <I18nextProvider i18n={i18n}>
+          <Contact />
+        </I18nextProvider>
       </Layout>
     ),
   },
@@ -31,7 +37,9 @@ const router = createBrowserRouter([
     path: "/about",
     element: (
       <Layout>
-        <About />
+        <I18nextProvider i18n={i18n}>
+          <About />
+        </I18nextProvider>
       </Layout>
     ),
   },
@@ -39,7 +47,9 @@ const router = createBrowserRouter([
     path: "/contact",
     element: (
       <Layout>
-        <Contact />
+        <I18nextProvider i18n={i18n}>
+          <Contact />
+        </I18nextProvider>
       </Layout>
     ),
   },

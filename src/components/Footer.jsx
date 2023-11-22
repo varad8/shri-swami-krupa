@@ -4,6 +4,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useTranslation } from "react-i18next";
 
 const webAppUrl = import.meta.env.VITE_WEB_APP;
 
@@ -11,6 +12,8 @@ const Footer = () => {
   const [email, setEmail] = useState("");
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const { t } = useTranslation();
 
   const handleSubscribe = async () => {
     try {
@@ -55,7 +58,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
             <div className="sm:col-span-2">
               <h1 className="max-w-lg text-xl font-semibold tracking-tight text-gray-100 xl:text-2xl dark:text-white">
-                Subscribe our newsletter to get update.
+                {t("Subscribe our newsletter to get update.")}
               </h1>
 
               <div className="flex flex-col mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row">
@@ -77,7 +80,7 @@ const Footer = () => {
                   {loading ? (
                     <FontAwesomeIcon icon={faSpinner} spin className="mr-2" />
                   ) : (
-                    "Subscribe"
+                    `${t("Subscribe")}`
                   )}
                 </button>
               </div>
@@ -90,49 +93,37 @@ const Footer = () => {
 
               <div className="flex flex-col items-start mt-5 space-y-2">
                 <a
-                  href="#"
+                  href="/"
                   className="text-gray-300 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
                 >
-                  Home
+                  {t("Home")}
                 </a>
                 <a
-                  href="#"
+                  href="/"
                   className="text-gray-300 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
                 >
-                  Who We Are
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
-                >
-                  Our Philosophy
+                  {t("Visiting Request")}
                 </a>
               </div>
             </div>
 
             <div>
               <p className="font-semibold text-gray-200 dark:text-white">
-                Industries
+                Other Services
               </p>
 
               <div className="flex flex-col items-start mt-5 space-y-2">
                 <a
-                  href="#"
+                  href="/"
                   className="text-gray-300 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
                 >
-                  Retail & E-Commerce
+                  {t("LIC")}
                 </a>
                 <a
-                  href="#"
+                  href="/"
                   className="text-gray-300 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
                 >
-                  Information Technology
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-300 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
-                >
-                  Finance & Insurance
+                  {t("Composted Chicken manure")}
                 </a>
               </div>
             </div>

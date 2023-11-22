@@ -1,12 +1,14 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function FeatureSection() {
+  const { t } = useTranslation();
   return (
     <>
       <section className="bg-white dark:bg-gray-900">
         <div className="container px-6 py-10 mx-auto">
           <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
-            explore our features
+            {t("explore our features")}
             <br />
           </h1>
 
@@ -27,17 +29,10 @@ function FeatureSection() {
                 </span>
 
                 <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-                  Organic Feed Nutrition
+                  {t("Organic Feed Nutrition")}
                 </h1>
 
-                <p className="text-gray-500 dark:text-gray-300">
-                  Our poultry farm prioritizes the health and well-being of our
-                  chickens by offering specially curated organic feeds. These
-                  feeds are free from synthetic additives and pesticides,
-                  ensuring that your chickens receive a nutritionally balanced
-                  and natural diet. This contributes to the overall quality of
-                  the chicken and eggs produced.
-                </p>
+                <p className="text-gray-500 dark:text-gray-300">{t("f1")}</p>
               </div>
 
               <div className="space-y-3">
@@ -49,17 +44,10 @@ function FeatureSection() {
                 </span>
 
                 <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-                  Non-GMO Grains for Optimal Health
+                  {t("Non-GMO Grains For Optimal Health")}
                 </h1>
 
-                <p className="text-gray-500 dark:text-gray-300">
-                  We understand the importance of avoiding genetically modified
-                  organisms (GMOs) in poultry nutrition. That's why our farm
-                  sources high-quality, non-GMO grains to create feeds for our
-                  chickens. By opting for non-GMO grains, we prioritize the
-                  natural growth and development of our chickens, resulting in
-                  healthier and more robust birds.
-                </p>
+                <p className="text-gray-500 dark:text-gray-300">{t("f2")}</p>
               </div>
 
               <div className="space-y-3">
@@ -71,17 +59,10 @@ function FeatureSection() {
                 </span>
 
                 <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-                  Pasture-Raised Freedom
+                  {t("Pasture-Raised Freedom")}
                 </h1>
 
-                <p className="text-gray-500 dark:text-gray-300">
-                  Our commitment to organic and natural practices extends to the
-                  living conditions of our chickens. We provide ample space for
-                  our chickens to roam freely in a pasture-based environment.
-                  This allows them to engage in natural behaviors, such as
-                  foraging and dust bathing, promoting their mental and physical
-                  well-being.
-                </p>
+                <p className="text-gray-500 dark:text-gray-300">{t("f3")}</p>
               </div>
 
               <div className="space-y-3">
@@ -93,17 +74,10 @@ function FeatureSection() {
                 </span>
 
                 <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-                  Supplemental Herbs for Immune Support
+                  {t("Supplemental Herbs for Immune Support")}
                 </h1>
 
-                <p className="text-gray-500 dark:text-gray-300">
-                  Enhancing the immune system of our chickens is a top priority.
-                  In addition to a wholesome organic diet, we incorporate
-                  carefully selected herbs known for their immune-boosting
-                  properties into their feed. This proactive approach helps to
-                  maintain the health of the flock naturally, reducing the need
-                  for artificial interventions.
-                </p>
+                <p className="text-gray-500 dark:text-gray-300">{t("f4")}</p>
               </div>
             </div>
 

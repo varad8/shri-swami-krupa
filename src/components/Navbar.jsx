@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom"; // Assuming you're using React Router
+import { useTranslation } from "react-i18next";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentUrl, setCurrentUrl] = useState("/");
   const location = useLocation();
+  const { t, i18n } = useTranslation();
 
-  const [selectedLanguage, setSelectedLanguage] = useState("EN");
+  const [selectedLanguage, setSelectedLanguage] = useState("");
 
   const changeLanguage = (language) => {
-    setSelectedLanguage(language);
-    console.log(language);
+    i18n.changeLanguage(language);
   };
 
   useEffect(() => {
@@ -113,7 +114,7 @@ function Navbar() {
               } md:mx-4 md:my-0`}
               href="/"
             >
-              Home
+              {t("Home")}
             </a>
             <a
               className={`my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 ${
@@ -123,7 +124,7 @@ function Navbar() {
               } md:mx-4 md:my-0`}
               href="/contact"
             >
-              Contact
+              {t("Contact")}
             </a>
             <a
               className={`my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 ${
@@ -133,7 +134,7 @@ function Navbar() {
               } md:mx-4 md:my-0`}
               href="/about"
             >
-              About
+              {t("About")}
             </a>
 
             <select
@@ -141,8 +142,9 @@ function Navbar() {
               onChange={(e) => changeLanguage(e.target.value)}
               className="md:mx-4 md:my-0 bg-transparent text-gray-700 shadow-none"
             >
-              <option value="EN">EN</option>
+              <option>{t("Language")}</option>
               <option value="MR">MR</option>
+              <option value="EN">EN</option>
             </select>
           </div>
         </div>
