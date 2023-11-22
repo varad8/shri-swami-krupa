@@ -23,7 +23,7 @@ const Footer = () => {
           "Content-Type": "application/json",
           // Add more headers if needed
         },
-        mode: "cors", // Ensure CORS mode is set
+        mode: "no-cors", // Ensure CORS mode is set
         body: JSON.stringify({ email }),
       });
 
