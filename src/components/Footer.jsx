@@ -215,7 +215,7 @@ const Footer = () => {
               href="https://www.vrnitsolution.tech/"
               rel="follow"
             >
-              Designed by VRNITSOLUTION &copy;2023 Varad Nikharage
+              {t("Designed by VRNITSOLUTION ©2023 Varad Nikharage")}
             </a>
           </div>
         </div>
