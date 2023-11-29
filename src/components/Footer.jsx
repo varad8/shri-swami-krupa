@@ -109,7 +109,7 @@ const Footer = () => {
 
             <div>
               <p className="font-semibold text-gray-200 dark:text-white">
-                Other Services
+                {t("Other Services")}
               </p>
 
               <div className="flex flex-col items-start mt-5 space-y-2">
