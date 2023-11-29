@@ -23,7 +23,6 @@ function HeroSection() {
 
         // Update the state with the fetched data
         setcImage(response.data.result);
-        console.log(response.data.result);
       } catch (error) {
         console.error("Error fetching carousel data:", error);
         setcImage([]);

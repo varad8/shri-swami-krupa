@@ -143,8 +143,8 @@ function Navbar() {
               className="md:mx-4 md:my-0 bg-transparent text-gray-700 shadow-none"
             >
               <option>{t("Language")}</option>
-              <option value="MR">MR</option>
-              <option value="EN">EN</option>
+              <option value="mr">MR</option>
+              <option value="en">EN</option>
             </select>
           </div>
         </div>

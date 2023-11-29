@@ -6,7 +6,7 @@ i18n
   .use(HttpApi)
   .use(initReactI18next)
   .init({
-    fallbackLng: "EN",
+    fallbackLng: "en",
     debug: true,
     interpolation: {
       escapeValue: false,
