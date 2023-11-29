@@ -88,7 +88,7 @@ const Footer = () => {
 
             <div>
               <p className="font-semibold text-gray-200 dark:text-white">
-                Quick Link
+                {t("Quick Link")}
               </p>
 
               <div className="flex flex-col items-start mt-5 space-y-2">
